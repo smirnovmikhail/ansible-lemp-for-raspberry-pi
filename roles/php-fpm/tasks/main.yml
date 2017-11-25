@@ -12,10 +12,9 @@
   apt: update_cache=yes
 
 - name: gpg add key
-  shell: gpg --keyserver pgpkeys.mit.edu --recv-key CCD91D6111A06851
-
-- name: apt-key add
-  shell: gpg --armor --export CCD91D6111A06851 | sudo apt-key add -
+  apt_key:
+    keyserver: pgpkeys.mit.edu
+    id: CCD91D6111A06851
 
 - name: execute apt-key update
   shell: apt-get update
